@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/go-chi/chi/v5"
+	auth "github.com/rithvik89/auth/pkg/auth"
 )
 
 func initHandler() *chi.Mux {
@@ -23,9 +24,11 @@ func UserPassAuthHandler(r chi.Router) func(r chi.Router) {
 
 func GithubHandler(r chi.Router) func(r chi.Router) {
 	return func(r chi.Router) {
-		r.Get("/", roothandler)
-		r.Get("/github", githubLoginHandler)
-		r.Get("/github/callback", githubCallbackHandler)
+		r.Get("/", auth.Roothandler)
+		r.Get("/github", auth.GithubLoginHandler)
+
+		// make sure this acts as middleware enabled route.
+		r.Get("/github/callback", auth.GithubCallbackHandler(handleGithubUserdata))
 
 	}
 }
