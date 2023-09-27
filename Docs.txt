@@ -1,0 +1,4 @@
+Github oauth2 flow : {
+    Github resource : https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#web-application-flow,
+    External blogs : https://sharmarajdaksh.github.io/blog/github-oauth-with-go
+}
